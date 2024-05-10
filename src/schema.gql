@@ -1,0 +1,54 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  userId: ID!
+  fullName: String!
+  userName: String!
+  email: String!
+  password: String!
+  role: String!
+  deletedAt: DateTime!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deleted_at: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  findAllUsers(query: SearchUserDto): [User!]!
+  findUserById(user_id: String!): User!
+}
+
+input SearchUserDto {
+  full_name: String
+  user_name: String
+  email: String
+  limit: Int
+  role: String
+}
+
+type Mutation {
+  createUser(createUserDto: CreateUserDto!): User!
+  updateUser(updateUserDto: UpdateUserDto!, id: String!): User!
+  deleteUser(user_id: String!): User!
+}
+
+input CreateUserDto {
+  full_name: String!
+  user_name: String!
+  email: String!
+  password: String!
+}
+
+input UpdateUserDto {
+  full_name: String
+  user_name: String
+  email: String
+  password: String
+}
